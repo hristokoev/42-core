@@ -6,10 +6,18 @@
 /*   By: hkoev <hkoev@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:00:40 by hkoev             #+#    #+#             */
-/*   Updated: 2023/01/10 20:16:02 by hkoev            ###   ########.fr       */
+/*   Updated: 2023/01/12 22:55:09 by hkoev            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t count, size_t n);
+void	*ft_calloc(size_t count, size_t n)
+{
+	void	*i;
+
+	i = malloc(count * n);
+	if (i)
+		ft_memset(i, 0, count * n);
+	return (i);
+}
