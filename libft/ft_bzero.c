@@ -6,7 +6,7 @@
 /*   By: hkoev <hkoev@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 12:58:15 by hkoev             #+#    #+#             */
-/*   Updated: 2023/01/10 20:16:02 by hkoev            ###   ########.fr       */
+/*   Updated: 2023/01/14 17:06:12 by hkoev            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,5 @@
 
 void	ft_bzero(void *str, size_t n)
 {
-	unsigned char	*p;
-
-	p = str;
-	while (n--)
-		*p++ = 0;
+	ft_memset(str, 0, n);
 }
