@@ -6,7 +6,7 @@
 /*   By: hkoev <hkoev@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 19:47:37 by hkoev             #+#    #+#             */
-/*   Updated: 2023/01/12 21:33:21 by hkoev            ###   ########.fr       */
+/*   Updated: 2023/01/15 08:40:13 by hkoev            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
-	const char	*str = s;
+	const char	*ps;
 
+	ps = s;
 	while (n--)
 	{
-		if (*str == c)
-			return ((void *)str);
-		str++;
+		if (*ps == c)
+			return ((void *)ps);
+		ps++;
 	}
 	return (NULL);
 }
