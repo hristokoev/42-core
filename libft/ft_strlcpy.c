@@ -6,7 +6,7 @@
 /*   By: hkoev <hkoev@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 12:58:43 by hkoev             #+#    #+#             */
-/*   Updated: 2023/01/10 20:16:02 by hkoev            ###   ########.fr       */
+/*   Updated: 2023/01/15 08:09:34 by hkoev            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t n)
 			dst[i] = src[i];
 			i++;
 		}
-		dst[i] = 0;
+		dst[i] = '\0';
 	}
 	while (src[i])
 		i++;
