@@ -6,7 +6,7 @@
 /*   By: hkoev <hkoev@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 12:59:38 by hkoev             #+#    #+#             */
-/*   Updated: 2023/01/11 22:04:22 by hkoev            ###   ########.fr       */
+/*   Updated: 2023/01/15 13:12:31 by hkoev            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ char	*ft_strnstr(const char *search, const char *find, size_t max)
 
 	i = 0;
 	j = 0;
-	if (!*find || find == NULL)
+	if (!*find)
 		return ((char *)search);
-	while (search[i] != '\0' && i < max)
+	while (search[i] && i < max)
 	{
 		j = 0;
-		while (find[j] != '\0' && search[i + j] == find[j] && i + j < max)
+		while (find[j] && search[i + j] == find[j] && i + j < max)
 		{
-			if (find[j + 1] == '\0')
+			if (!find[j + 1])
 				return ((char *)search + i);
 			j++;
 		}
