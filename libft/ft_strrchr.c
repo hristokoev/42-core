@@ -6,7 +6,7 @@
 /*   By: hkoev <hkoev@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 12:59:11 by hkoev             #+#    #+#             */
-/*   Updated: 2023/01/15 08:22:19 by hkoev            ###   ########.fr       */
+/*   Updated: 2023/01/15 14:12:55 by hkoev            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ char	*ft_strrchr(const char *str, int c)
 	pstart = str;
 	i = ft_strlen(str);
 	str = (str + i);
+	if (c >= 256)
+		c = c % 256;
 	while (*str != *pstart && c != *str)
 		str--;
 	if (c == *str)
