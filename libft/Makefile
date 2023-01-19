@@ -6,7 +6,7 @@
 #    By: hkoev <hkoev@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 19:45:14 by hkoev             #+#    #+#              #
-#    Updated: 2023/01/13 20:24:47 by hkoev            ###   ########.fr        #
+#    Updated: 2023/01/19 16:31:24 by hkoev            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,24 +19,28 @@ SOURCES = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
 	ft_substr.c ft_strjoin.c \
 	*ft_strtrim.c **ft_split.c *ft_itoa.c *ft_strmapi.c ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c
 
-OBJECTS = $(SOURCES:.c=.o)
+BONUSES = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c *ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c *ft_lstmap.c
+
+SOURCES_OBJS = $(SOURCES:.c=.o)
+
+BONUSES_OBJS = ${BONUSES:.c=.o}
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
-$(NAME): $(OBJECTS)
+$(NAME): $(SOURCES_OBJS)
 	$(AR) -r $@ $?
 
-bonus: $(OBJECTS)
+bonus: $(SOURCES_OBJS) {BONUSES_OBJS}
 	$(AR) -r $(NAME) $?
 
 %.o: %.c
 	$(CC) -c $(CFLAGS) $?
 
 clean:
-	rm -f $(OBJECTS)
+	rm -f $(SOURCES_OBJS) ${BONUSES_OBJS}
 
 fclean: clean
 	rm -f $(NAME)

@@ -1,18 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkoev <hkoev@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/13 18:19:30 by hkoev             #+#    #+#             */
-/*   Updated: 2023/01/19 15:39:36 by hkoev            ###   ########.fr       */
+/*   Created: 2023/01/19 16:09:14 by hkoev             #+#    #+#             */
+/*   Updated: 2023/01/19 16:29:13 by hkoev            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// s = "lorem ipsum dolor sit amet", c = " ";
-// str = "lorem", "ipsum", "dolor", "sit", "amet"
-
 #include "libft.h"
 
-char	**ft_split(char const *s, char c);
+void	ft_lstadd_back(t_list **lst, t_list *new);
