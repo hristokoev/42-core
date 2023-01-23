@@ -6,7 +6,7 @@
 /*   By: hkoev <hkoev@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 18:19:08 by hkoev             #+#    #+#             */
-/*   Updated: 2023/01/17 18:13:45 by hkoev            ###   ########.fr       */
+/*   Updated: 2023/01/23 14:48:33 by hkoev            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strtrim(char const *str, char const *set)
 
 	start = 0;
 	end = ft_strlen(str) - 1;
-	if (!str | !set)
+	if (!str || !set)
 		return (NULL);
 	while (ft_strchr(set, str[start]))
 		start++;

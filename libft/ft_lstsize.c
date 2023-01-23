@@ -6,10 +6,21 @@
 /*   By: hkoev <hkoev@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 16:08:52 by hkoev             #+#    #+#             */
-/*   Updated: 2023/01/19 16:30:02 by hkoev            ###   ########.fr       */
+/*   Updated: 2023/01/23 11:23:29 by hkoev            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_lstsize(t_list *lst);
+int	ft_lstsize(t_list *lst)
+{
+	int	size;
+
+	size = 0;
+	while (lst)
+	{
+		lst = lst->next;
+		size++;
+	}		
+	return (size);
+}

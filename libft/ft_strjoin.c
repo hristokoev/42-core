@@ -6,7 +6,7 @@
 /*   By: hkoev <hkoev@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 18:18:57 by hkoev             #+#    #+#             */
-/*   Updated: 2023/01/13 19:49:48 by hkoev            ###   ########.fr       */
+/*   Updated: 2023/01/23 16:33:55 by hkoev            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,14 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	i;
 	size_t	j;
 
+	if (!s1 || !s2)
+		return (NULL);
 	i = ft_strlen(s1);
 	j = ft_strlen(s2);
-	str = (char *)malloc(i + j + 1);
+	str = (char *)ft_calloc(i + j + 1, sizeof(char));
+	if (!str)
+		return (NULL);
 	ft_memcpy(str, s1, i);
 	ft_memcpy(str + i, s2, j);
-	*(str + i + j) = '\0';
 	return ((char *)str);
 }
