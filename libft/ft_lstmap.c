@@ -6,7 +6,7 @@
 /*   By: hkoev <hkoev@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 16:10:12 by hkoev             #+#    #+#             */
-/*   Updated: 2023/01/23 13:01:13 by hkoev            ###   ########.fr       */
+/*   Updated: 2023/02/01 00:01:05 by hkoev            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,14 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	if (lst)
 	{
 		tmp = lst;
-		if (!(begin = ft_lstnew(f(tmp->content))))
+		begin = ft_lstnew(f(tmp->content));
+		if (!begin)
 			return (NULL);
 		tmp = tmp->next;
 		while (tmp)
 		{
-			if (!(new = ft_lstnew(f(tmp->content))))
+			new = ft_lstnew(f(tmp->content));
+			if (!(new))
 			{
 				ft_lstclear(&begin, del);
 				return (NULL);
@@ -38,13 +40,3 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	}
 	return (NULL);
 }
-
-// lst: The address of a pointer to a node.
-// f: The address of the function used to iterate on the list.
-// del: The address of the function used to delete the content of a node if needed
-
-// Iterates the list ’lst’ and applies the function
-// ’f’ on the content of each node. Creates a new
-// list resulting of the successive applications of
-// the function ’f’. The ’del’ function is used to
-// delete the content of a node if needed.

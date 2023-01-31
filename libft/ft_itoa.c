@@ -6,11 +6,12 @@
 /*   By: hkoev <hkoev@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 18:19:42 by hkoev             #+#    #+#             */
-/*   Updated: 2023/01/23 16:24:33 by hkoev            ###   ########.fr       */
+/*   Updated: 2023/01/31 23:58:10 by hkoev            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 static int	ft_digits(int n)
 {
@@ -26,31 +27,42 @@ static int	ft_digits(int n)
 	return (i);
 }
 
-char	*ft_itoa(int n)
+char	*ft_allocator(long int *ln, int size, int neg)
 {
-	int		i;
-	int		size;
-	int		neg;
 	char	*s;
 
-	if (n == -2147483648)
-		return ("-2147483648");
-	s = malloc((sizeof(char)) * 12);
+	s = malloc((sizeof(char)) * size + neg + 1);
 	if (!s)
 		return (NULL);
-	neg = 0;
-	if (n < 0)
+	if (*ln < 0)
 	{
+		*ln = *ln * -1;
 		s[0] = '-';
-		neg = 1;
-		n = n * -1;
 	}
+	return (s);
+}
+
+char	*ft_itoa(int n)
+{
+	int			i;
+	int			size;
+	int			neg;
+	long int	ln;
+	char		*s;
+
+	ln = n;
 	i = 0;
-	size = ft_digits(n);
+	size = ft_digits(ln);
+	neg = 0;
+	if (ln < 0)
+		neg = 1;
+	s = ft_allocator(&ln, size, neg);
+	if (!s)
+		return (NULL);
 	while (i < size)
 	{
-		s[size - 1 + neg - i] = n % 10 + '0';
-		n /= 10;
+		s[size - 1 - i + neg] = ln % 10 + '0';
+		ln /= 10;
 		i++;
 	}
 	s[size + neg] = '\0';
