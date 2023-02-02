@@ -6,7 +6,7 @@
 #    By: hkoev <hkoev@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 19:45:14 by hkoev             #+#    #+#              #
-#    Updated: 2023/01/23 14:10:27 by hkoev            ###   ########.fr        #
+#    Updated: 2023/02/02 18:43:11 by hkoev            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,9 +54,5 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
-
-so:
-	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SOURCES) ${BONUSES}
-		gcc -nostartfiles -shared -o libft.so $(SOURCES_OBJS) ${BONUSES_OBJS}
 
 .PHONY: all bonus clean fclean re
