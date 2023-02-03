@@ -6,7 +6,7 @@
 #    By: hkoev <hkoev@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 19:45:14 by hkoev             #+#    #+#              #
-#    Updated: 2023/02/02 18:43:11 by hkoev            ###   ########.fr        #
+#    Updated: 2023/02/03 20:44:17 by hkoev            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ SOURCES_OBJS = $(SOURCES:.c=.o)
 
 BONUSES_OBJS = ${BONUSES:.c=.o}
 
-CC = gcc
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
