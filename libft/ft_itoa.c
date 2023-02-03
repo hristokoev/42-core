@@ -6,12 +6,11 @@
 /*   By: hkoev <hkoev@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 18:19:42 by hkoev             #+#    #+#             */
-/*   Updated: 2023/01/31 23:58:10 by hkoev            ###   ########.fr       */
+/*   Updated: 2023/02/03 20:26:46 by hkoev            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 static int	ft_digits(int n)
 {
