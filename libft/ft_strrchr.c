@@ -6,7 +6,7 @@
 /*   By: hkoev <hkoev@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 12:59:11 by hkoev             #+#    #+#             */
-/*   Updated: 2023/02/03 20:28:01 by hkoev            ###   ########.fr       */
+/*   Updated: 2023/02/05 12:57:15 by hkoev            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*ft_strrchr(const char *str, int c)
 {
-	char	start;
 	size_t		i;
+	char		start;
 
 	start = str[0];
 	i = ft_strlen(str);
