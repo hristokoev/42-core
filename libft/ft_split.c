@@ -6,11 +6,12 @@
 /*   By: hkoev <hkoev@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 18:19:30 by hkoev             #+#    #+#             */
-/*   Updated: 2023/01/23 00:42:54 by hkoev            ###   ########.fr       */
+/*   Updated: 2023/02/16 16:57:41 by hkoev            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 static size_t	ft_words(char const *s, char c)
 {
@@ -54,4 +55,12 @@ char	**ft_split(char const *s, char c)
 	}
 	strings[i] = NULL;
 	return (strings);
+}
+
+int	main()
+{
+	char	s[] = "lorem ipsum dolor sit amet";
+	char	del = ' ';
+	ft_split(s, del);
+	return (0);
 }
