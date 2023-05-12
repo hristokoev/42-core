@@ -1,51 +1,145 @@
-/*
-
-• %c Prints a single character.
-• %s Prints a string (as defined by the common C convention).
-• %p The void * pointer argument has to be printed in hexadecimal format.
-• %d Prints a decimal (base 10) number.
-• %i Prints an integer in base 10.
-• %u Prints an unsigned decimal (base 10) number.
-• %x Prints a number in hexadecimal (base 16) lowercase format.
-• %X Prints a number in hexadecimal (base 16) uppercase format.
-• %% Prints a percent sign.
-
-*/
-
-// C program for the above approach
 #include <stdarg.h>
 #include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
 
-// Variadic function to find the largest number
-int LargestNumber(int n, ...)
+static int	ft_digits(int n)
 {
-       // Declaring pointer to the argument list
-       va_list ptr;
+	int	i;
 
-       // Initializing argument to the list pointer
-       va_start(ptr, n);
+	i = 1;
+	n /= 10;
+	while (n)
+	{
+		n /= 10;
+		i++;
+	}
+	return (i);
+}
 
-       // Initializing variable and its type
-       int max = va_arg(ptr, int);
+char	*ft_allocator(long int *ln, int size, int neg)
+{
+	char	*s;
 
-       for (int i = 0; i < n - 1; i++)
-       {
-              // Accessing current variable and pointing to next
-              int temp = va_arg(ptr, int);
-              max = temp > max ? temp : max;
-       }
+	s = malloc((sizeof(char)) * size + neg + 1);
+	if (!s)
+		return (NULL);
+	if (*ln < 0)
+	{
+		*ln = *ln * -1;
+		s[0] = '-';
+	}
+	return (s);
+}
 
-       // End of argument list traversal
-       va_end(ptr);
+char	*ft_itoa(int n)
+{
+	int			i;
+	int			size;
+	int			neg;
+	long int	ln;
+	char		*s;
 
-       return max;
+	ln = n;
+	i = 0;
+	size = ft_digits(ln);
+	neg = 0;
+	if (ln < 0)
+		neg = 1;
+	s = ft_allocator(&ln, size, neg);
+	if (!s)
+		return (NULL);
+	while (i < size)
+	{
+		s[size - 1 - i + neg] = ln % 10 + '0';
+		ln /= 10;
+		i++;
+	}
+	s[size + neg] = '\0';
+	return (s);
+}
+
+int ft_printf(const char *str, ...)
+{
+	int i;
+	i = 0;
+	va_list args;
+	va_start(args, str);
+	while (str[i] != '\0')
+	{
+		if (str[i] == '%')
+		{
+			i++;
+			if (str[i] == 'c')
+			{
+				char c = va_arg(args, int);
+				write(1, &c, 1);
+			}
+			else if (str[i] == 's')
+			{
+				char *s = va_arg(args, char *);
+				while (*s)
+				{
+					write(1, s, 1);
+					s++;
+				}
+			}
+			else if (str[i] == 'd' || str[i] == 'i')
+			{
+				int d = va_arg(args, int);
+				char *s = ft_itoa(d);
+				while (*s)
+				{
+					write(1, s, 1);
+					s++;
+				}
+			}
+			else if (str[i] == 'u')
+			{
+				unsigned int u = va_arg(args, unsigned int);
+				printf("%u", u);
+			}
+			else if (str[i] == 'x')
+			{
+				unsigned int x = va_arg(args, unsigned int);
+				printf("%x", x);
+			}
+			else if (str[i] == 'X')
+			{
+				unsigned int X = va_arg(args, unsigned int);
+				printf("%X", X);
+			}
+			else if (str[i] == 'p')
+			{
+				void *p = va_arg(args, void *);
+				printf("%p", p);
+			}
+			else if (str[i] == '%')
+			{
+				printf("%%");
+			}
+		}
+		else
+		{
+			write(1, &str[i], 1);
+		}
+		i++;
+	}
+	va_end(args);
+	return 0;
 }
 
 // Driver Code
 int main()
 {
-       printf("%d\n", LargestNumber(2, 1, 2));
-       printf("%d\n", LargestNumber(3, 7, 4, 5));
-       printf("%d\n", LargestNumber(4, 6, 55, 8, 9));
-       return 0;
+	ft_printf("Character: %c\n", 'A');
+	ft_printf("String: %s\n", "Hello World!");
+	ft_printf("Pointer: %p\n", &ft_printf);
+	ft_printf("Decimal: %d\n", 123);
+	ft_printf("Integer: %i\n", 123);
+	ft_printf("Unsigned: %u\n", 123);
+	ft_printf("Hexadecimal (lowercase): %x\n", 123);
+	ft_printf("Hexadecimal (uppercase): %X\n", 123);
+	ft_printf("Percent sign: %%\n");
+	return 0;
 }
