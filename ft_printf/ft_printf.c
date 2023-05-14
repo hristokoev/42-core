@@ -1,62 +1,24 @@
-#include <stdarg.h>
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hkoev <hkoev@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/14 20:01:07 by hkoev             #+#    #+#             */
+/*   Updated: 2023/05/14 20:01:09 by hkoev            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-static int	ft_digits(int n)
+#include "ft_printf.h"
+
+static void ft_write(char *s)
 {
-	int	i;
-
-	i = 1;
-	n /= 10;
-	while (n)
+	while (*s)
 	{
-		n /= 10;
-		i++;
+		write(1, s, 1);
+		s++;
 	}
-	return (i);
-}
-
-char	*ft_allocator(long int *ln, int size, int neg)
-{
-	char	*s;
-
-	s = malloc((sizeof(char)) * size + neg + 1);
-	if (!s)
-		return (NULL);
-	if (*ln < 0)
-	{
-		*ln = *ln * -1;
-		s[0] = '-';
-	}
-	return (s);
-}
-
-char	*ft_itoa(int n)
-{
-	int			i;
-	int			size;
-	int			neg;
-	long int	ln;
-	char		*s;
-
-	ln = n;
-	i = 0;
-	size = ft_digits(ln);
-	neg = 0;
-	if (ln < 0)
-		neg = 1;
-	s = ft_allocator(&ln, size, neg);
-	if (!s)
-		return (NULL);
-	while (i < size)
-	{
-		s[size - 1 - i + neg] = ln % 10 + '0';
-		ln /= 10;
-		i++;
-	}
-	s[size + neg] = '\0';
-	return (s);
 }
 
 int ft_printf(const char *str, ...)
@@ -78,36 +40,31 @@ int ft_printf(const char *str, ...)
 			else if (str[i] == 's')
 			{
 				char *s = va_arg(args, char *);
-				while (*s)
-				{
-					write(1, s, 1);
-					s++;
-				}
+				ft_write(s);
 			}
 			else if (str[i] == 'd' || str[i] == 'i')
 			{
 				int d = va_arg(args, int);
 				char *s = ft_itoa(d);
-				while (*s)
-				{
-					write(1, s, 1);
-					s++;
-				}
+				ft_write(s);
 			}
 			else if (str[i] == 'u')
 			{
 				unsigned int u = va_arg(args, unsigned int);
-				printf("%u", u);
+				char *s = ft_uint_to_str(u);
+				ft_write(s);
 			}
 			else if (str[i] == 'x')
 			{
 				unsigned int x = va_arg(args, unsigned int);
-				printf("%x", x);
+				char *s = ft_itox(x, 'l');
+				ft_write(s);
 			}
 			else if (str[i] == 'X')
 			{
 				unsigned int X = va_arg(args, unsigned int);
-				printf("%X", X);
+				char *s = ft_itox(X, 'u');
+				ft_write(s);
 			}
 			else if (str[i] == 'p')
 			{
@@ -116,7 +73,7 @@ int ft_printf(const char *str, ...)
 			}
 			else if (str[i] == '%')
 			{
-				printf("%%");
+				write(1, "%%", 2);
 			}
 		}
 		else
@@ -126,20 +83,5 @@ int ft_printf(const char *str, ...)
 		i++;
 	}
 	va_end(args);
-	return 0;
-}
-
-// Driver Code
-int main()
-{
-	ft_printf("Character: %c\n", 'A');
-	ft_printf("String: %s\n", "Hello World!");
-	ft_printf("Pointer: %p\n", &ft_printf);
-	ft_printf("Decimal: %d\n", 123);
-	ft_printf("Integer: %i\n", 123);
-	ft_printf("Unsigned: %u\n", 123);
-	ft_printf("Hexadecimal (lowercase): %x\n", 123);
-	ft_printf("Hexadecimal (uppercase): %X\n", 123);
-	ft_printf("Percent sign: %%\n");
 	return 0;
 }
