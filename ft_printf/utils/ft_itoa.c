@@ -6,11 +6,11 @@
 /*   By: hkoev <hkoev@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 18:19:42 by hkoev             #+#    #+#             */
-/*   Updated: 2023/05/14 16:05:46 by hkoev            ###   ########.fr       */
+/*   Updated: 2023/05/15 19:21:11 by hkoev            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
 static int	ft_digits(int n)
 {

@@ -6,11 +6,11 @@
 /*   By: hkoev <hkoev@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 12:58:43 by hkoev             #+#    #+#             */
-/*   Updated: 2023/05/14 16:01:31 by hkoev            ###   ########.fr       */
+/*   Updated: 2023/05/15 19:21:10 by hkoev            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
 size_t	ft_strcpy(char *dst, const char *src)
 {
