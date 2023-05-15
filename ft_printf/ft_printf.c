@@ -6,13 +6,13 @@
 /*   By: hkoev <hkoev@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 20:01:07 by hkoev             #+#    #+#             */
-/*   Updated: 2023/05/15 19:05:59 by hkoev            ###   ########.fr       */
+/*   Updated: 2023/05/15 19:46:44 by hkoev            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void ft_printf_args(va_list args, char c)
+static void	ft_printf_args(va_list args, char c)
 {
 	if (c == 'c')
 		ft_printf_args_c(args);
@@ -32,13 +32,13 @@ static void ft_printf_args(va_list args, char c)
 		write(1, "%%", 2);
 }
 
-
-int ft_printf(const char *str, ...)
+int	ft_printf(const char *str, ...)
 {
-	int i;
-	i = 0;
-	va_list args;
+	int		i;
+	va_list	args;
+
 	va_start(args, str);
+	i = 0;
 	while (str[i] != '\0')
 	{
 		if (str[i] == '%')
@@ -51,5 +51,5 @@ int ft_printf(const char *str, ...)
 		i++;
 	}
 	va_end(args);
-	return 0;
+	return (0);
 }

@@ -1,36 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_uint_to_str.c                                   :+:      :+:    :+:   */
+/*   ft_uiptox.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkoev <hkoev@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/13 18:19:42 by hkoev             #+#    #+#             */
-/*   Updated: 2023/05/15 19:21:10 by hkoev            ###   ########.fr       */
+/*   Created: 2023/05/14 19:11:50 by hkoev             #+#    #+#             */
+/*   Updated: 2023/05/15 19:36:29 by hkoev            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-char *ft_uint_to_str(unsigned int n)
+char	*ft_uiptox(void *ptr)
 {
-	char *buf = (char *)malloc(21);
-	char *p = buf + 20;
+	int			slen;
+	char		*s;
+	uintptr_t	n;
+	uintptr_t	temp;
 
-	if (n == 0)
+	n = (uintptr_t) ptr;
+	slen = ft_hexlen(n);
+	s = (char *)malloc(slen + 3);
+	if (!s)
+		return (NULL);
+	s[0] = '0';
+	s[1] = 'x';
+	slen += 2;
+	s[slen] = '\0';
+	while (n != 0)
 	{
-		*--p = '0';
+		temp = n % 16;
+		if (temp < 10)
+			s[slen - 1] = temp + 48;
+		else
+			s[slen - 1] = temp + 87;
+		n /= 16;
+		slen--;
 	}
-	else
-	{
-		while (n != 0)
-		{
-			*--p = '0' + (n % 10);
-			n /= 10;
-		}
-	}
-	char *result = (char *)malloc(buf + 21 - p);
-	ft_strcpy(result, p);
-	free(buf);
-	return result;
+	return (s);
 }

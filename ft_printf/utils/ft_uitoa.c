@@ -1,24 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_args_i.c                                 :+:      :+:    :+:   */
+/*   ft_uitoa.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkoev <hkoev@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/15 19:02:17 by hkoev             #+#    #+#             */
-/*   Updated: 2023/05/15 19:41:37 by hkoev            ###   ########.fr       */
+/*   Created: 2023/01/13 18:19:42 by hkoev             #+#    #+#             */
+/*   Updated: 2023/05/15 19:33:39 by hkoev            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
-int	ft_printf_args_i(va_list args)
+char	*ft_uitoa(unsigned int n)
 {
-	int		i;
-	char	*s;
+	char	*buf;
+	char	*p;
+	char	*result;
 
-	i = va_arg(args, int);
-	s = ft_itoa(i);
-	ft_write(s);
-	return (0);
+	buf = (char *)malloc(21);
+	if (!buf)
+		return (NULL);
+	p = buf + 20;
+	if (n == 0)
+	{
+		*--p = '0';
+	}
+	else
+	{
+		while (n != 0)
+		{
+			*--p = '0' + (n % 10);
+			n /= 10;
+		}
+	}
+	result = (char *)malloc(buf + 21 - p);
+	ft_strcpy(result, p);
+	free(buf);
+	return (result);
 }

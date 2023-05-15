@@ -6,7 +6,7 @@
 #    By: hkoev <hkoev@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/14 14:32:21 by hkoev             #+#    #+#              #
-#    Updated: 2023/05/15 19:29:19 by hkoev            ###   ########.fr        #
+#    Updated: 2023/05/15 20:02:21 by hkoev            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,8 @@ SRCS		=   ft_printf.c \
 				utils/ft_itoa.c \
 				utils/ft_itox.c \
 				utils/ft_strcpy.c \
-				utils/ft_uint_to_str.c \
-				utils/ft_uintptr_to_hex.c \
+				utils/ft_uitoa.c \
+				utils/ft_uiptox.c \
 				ft_printf_args_c.c ft_printf_args_i.c ft_printf_args_p.c \
 				ft_printf_args_s.c ft_printf_args_u.c ft_printf_args_x.c
 OBJS     	=   $(addprefix $(OBJ_DIR)/,$(SRCS:.c=.o))

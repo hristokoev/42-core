@@ -6,13 +6,13 @@
 /*   By: hkoev <hkoev@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:55:41 by hkoev             #+#    #+#             */
-/*   Updated: 2023/05/15 19:21:08 by hkoev            ###   ########.fr       */
+/*   Updated: 2023/05/15 19:36:43 by hkoev            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-void ft_write(char *s)
+void	ft_write(char *s)
 {
 	while (*s)
 	{

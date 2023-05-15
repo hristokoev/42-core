@@ -6,15 +6,17 @@
 /*   By: hkoev <hkoev@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 19:01:23 by hkoev             #+#    #+#             */
-/*   Updated: 2023/05/15 19:01:39 by hkoev            ###   ########.fr       */
+/*   Updated: 2023/05/15 19:39:44 by hkoev            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_printf_args_s(va_list args)
+int	ft_printf_args_s(va_list args)
 {
-    char *s = va_arg(args, char *);
-    ft_write(s);
-    return (0);
+	char	*s;
+
+	s = va_arg(args, char *);
+	ft_write(s);
+	return (0);
 }
