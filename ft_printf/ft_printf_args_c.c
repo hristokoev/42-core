@@ -6,17 +6,18 @@
 /*   By: hkoev <hkoev@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 19:00:44 by hkoev             #+#    #+#             */
-/*   Updated: 2023/05/15 19:37:51 by hkoev            ###   ########.fr       */
+/*   Updated: 2023/05/16 21:10:10 by hkoev            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf_args_c(va_list args)
+int	ft_printf_args_c(va_list args, int *count)
 {
 	char	c;
 
 	c = va_arg(args, int);
 	write(1, &c, 1);
+	(*count)++;
 	return (0);
 }

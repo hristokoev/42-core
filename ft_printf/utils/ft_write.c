@@ -6,17 +6,18 @@
 /*   By: hkoev <hkoev@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:55:41 by hkoev             #+#    #+#             */
-/*   Updated: 2023/05/15 19:36:43 by hkoev            ###   ########.fr       */
+/*   Updated: 2023/05/16 19:54:00 by hkoev            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-void	ft_write(char *s)
+void	ft_write(char *s, int *count)
 {
 	while (*s)
 	{
 		write(1, s, 1);
 		s++;
+		(*count)++;
 	}
 }

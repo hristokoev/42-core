@@ -6,7 +6,7 @@
 #    By: hkoev <hkoev@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/14 14:32:21 by hkoev             #+#    #+#              #
-#    Updated: 2023/05/15 20:02:21 by hkoev            ###   ########.fr        #
+#    Updated: 2023/05/15 21:08:00 by hkoev            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRCS		=   ft_printf.c \
 				ft_printf_args_c.c ft_printf_args_i.c ft_printf_args_p.c \
 				ft_printf_args_s.c ft_printf_args_u.c ft_printf_args_x.c
 OBJS     	=   $(addprefix $(OBJ_DIR)/,$(SRCS:.c=.o))
-NAME		=	ft_printf.a
+NAME		=	libftprintf.a
 INCS		=	ft_printf.h
 LIBC		=	ar rc
 RM			=	rm -rf
