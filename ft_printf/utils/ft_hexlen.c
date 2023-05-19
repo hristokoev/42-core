@@ -6,20 +6,22 @@
 /*   By: hkoev <hkoev@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:20:18 by hkoev             #+#    #+#             */
-/*   Updated: 2023/05/15 19:21:12 by hkoev            ###   ########.fr       */
+/*   Updated: 2023/05/19 16:27:54 by hkoev            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-int	ft_hexlen(unsigned int n)
+int	ft_hexlen(unsigned long long int n)
 {
 	int	len;
 
 	len = 0;
-	while (n != 0)
+	if (n == 0)
+		return (1);
+	while (n > 0)
 	{
-		n /= 16;
+		n = n / 16;
 		len++;
 	}
 	return (len);

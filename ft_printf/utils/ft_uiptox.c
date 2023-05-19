@@ -12,31 +12,31 @@
 
 #include "../ft_printf.h"
 
+static void	ft_convert_uiptox(uintptr_t n, char *s)
+{
+	int	len;
+
+	len = ft_hexlen(n);
+	s[len + 2] = '\0';
+	while (n != 0)
+	{
+		s[len + 1] = "0123456789abcdef"[n % 16];
+		n /= 16;
+		len--;
+	}
+}
+
 char	*ft_uiptox(void *ptr)
 {
-	int			slen;
-	char		*s;
 	uintptr_t	n;
-	uintptr_t	temp;
+	char		*s;
 
-	n = (uintptr_t) ptr;
-	slen = ft_hexlen(n);
-	s = (char *)malloc(slen + 3);
+	n = (uintptr_t)ptr;
+	s = (char *)malloc(sizeof(char) * (ft_hexlen(n) + 3));
 	if (!s)
 		return (NULL);
 	s[0] = '0';
 	s[1] = 'x';
-	slen += 2;
-	s[slen] = '\0';
-	while (n != 0)
-	{
-		temp = n % 16;
-		if (temp < 10)
-			s[slen - 1] = temp + 48;
-		else
-			s[slen - 1] = temp + 87;
-		n /= 16;
-		slen--;
-	}
+	ft_convert_uiptox(n, s);
 	return (s);
 }

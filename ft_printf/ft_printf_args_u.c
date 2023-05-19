@@ -6,7 +6,7 @@
 /*   By: hkoev <hkoev@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 19:02:56 by hkoev             #+#    #+#             */
-/*   Updated: 2023/05/16 21:08:13 by hkoev            ###   ########.fr       */
+/*   Updated: 2023/05/18 22:27:36 by hkoev            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@ int	ft_printf_args_u(va_list args, int *count)
 	i = va_arg(args, unsigned int);
 	s = ft_uitoa(i);
 	ft_write(s, count);
+	free(s);
 	return (0);
 }

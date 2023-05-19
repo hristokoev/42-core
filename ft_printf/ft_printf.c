@@ -6,7 +6,7 @@
 /*   By: hkoev <hkoev@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 20:01:07 by hkoev             #+#    #+#             */
-/*   Updated: 2023/05/16 21:16:24 by hkoev            ###   ########.fr       */
+/*   Updated: 2023/05/18 20:06:35 by hkoev            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ static void	ft_printf_args(va_list args, char c, int *count)
 		ft_printf_args_p(args, count);
 	else if (c == '%')
 	{
-		count++;
-		write(1, "%%", 2);
+		(*count)++;
+		write(1, "%", 1);
 	}
 }
 
